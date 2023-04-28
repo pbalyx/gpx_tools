@@ -11,6 +11,15 @@
 /*			height: 30px;*/
 			padding-left: 20px;		
 		}
+			
+		.deploy {
+			color: red;
+		/*	font-size:25px;
+			display: block;
+			position: relative;
+			top:10px;
+			left : 400px;*/
+		}
 	
 	</style>
 </head>
@@ -19,36 +28,55 @@
 <!--   <h1>A few simple tools for .gpx files</h1> -->
 	
 	<div id= "gpxView_div" class= "tool_div"> 
-		<h2>  GpxView </h2>
-		<div id= "gpx_elev_intro">
+		<h2>  GpxView </h2> 
+		<button id="b_gpxview_deploy" class="deploy">v-------------------------------------------v</button><br> </br>
+		<div id= "gpxview_intro" style = "display : none">
 			Un visualisateur gpx de plus... mais celui-ci fait des petits trucs qu'on ne trouve pas forcément ailleurs.
 			<ul>
 				<li>Comparaison de deux gpx, y compris les profils d'altitude</li>
-				<li>Ajustement visuel du lissage pour le calcul des dénivelé</li>
+				<li>Ajustement visuel du lissage pour le calcul des dénivelés</li>
 				<li>Extraction de parties du trajet</li>
 				<li>et plus encore...</li>
 			</ul>
+			C'est une simple page html
+			<p>	Vous pouvez <a href="./GpxView/GpxView.html" >la tester directement ici</a>
+			<br>
+			ou&nbsp 
+				<a href="./GpxView/GpxView.html" download = "_GpxView_" >télécharger le fichier</a>&nbsppour l'utiliser localement
+			</p>
 		</div>
-		C'est une simple page html
-		<p>	Vous pouvez <a href="./GpxView/GpxView.html" >la tester directement ici</a>
-		<br>
-		ou&nbsp 
-			<a href="./GpxView/GpxView.html" download = "_GpxView_" >télécharger le fichier</a>&nbsppour l'utiliser localement
-		</p>
 	</div><br>
 	<div id= "gpx_elev_div" class= "tool_div"> 
 		<h2>  Gpx_elev </h2>
-		<div id= "gpx_elev_intro">
-		Quand on veut extraire un fichier .gpx basé sur une route d'OpenStreetMap, soit directement, soit en utilisant des outils annexes (Waymarkedtrails, Knooppuntnet) on obtient un fichier "plat" sans indication d'altitude.
-		Ce petit utilitaire permet de rajouter une altitude sur chaque point du circuit
+		<button id="b_gpx_elev_deploy" class="deploy">v-------------------------------------------v</button><br> </br>
+		<div id= "gpx_elev_intro" style = "display : none">
+			Quand on veut extraire un fichier .gpx basé sur une route d'OpenStreetMap, soit directement, soit en utilisant des outils annexes (Waymarkedtrails, Knooppuntnet) on obtient un fichier "plat" sans indication d'altitude.
+			Ce petit utilitaire permet de rajouter une altitude sur chaque point du circuit
+			C'est une simple page html
+			<p>	Vous pouvez <a href="./Gpx_elev/Gpx_elev.html" >la tester directement ici</a>
+			<br>
+			ou&nbsp 
+				<a href="./Gpx_elev/Gpx_elev.html" download = "_GpxView_" >télécharger le fichier</a>&nbsppour l'utiliser localement
+			</p>
 		</div>
-		C'est une simple page html
-		<p>	Vous pouvez <a href="./Gpx_elev/gpx_elev.html" >la tester directement ici</a>
-		<br>
-		ou&nbsp 
-			<a href="./Gpx_elev/gpx_elev.html" download = "_gpx_elev_" >télécharger le fichier</a>&nbsppour l'utiliser localement
-		</p>
 	</div>	
+	<script>
+		b_gpxview_deploy.addEventListener("click", function() {
+		    if (gpxview_intro.style.display === "block") {
+		  gpxview_intro.style.display = "none";
+		} else {
+		  gpxview_intro.style.display = "block";
+		}
+		});
+		b_gpx_elev_deploy.addEventListener("click", function() {
+		    if (gpx_elev_intro.style.display === "block") {
+		  gpx_elev_intro.style.display = "none";
+		} else {
+		  gpx_elev_intro.style.display = "block";
+		}
+
+		});
+	</script>
 </body>
 </html>
 
