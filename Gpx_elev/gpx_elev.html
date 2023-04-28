@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>gpx_elev 0.0</title>
+    <style>
+		#main {
+			position: absolute;
+			left: 100px;
+		}
+		
+		#input_label {
+			background-color: Aqua;
+			padding-left: 20px;
+			padding-right: 10px;
+			padding-top: 8px;
+			padding-bottom: 8px;
+		}
+		
+		#input_file_div {
+			display: block;
+			border: 3px solid blue;
+			width:  500px;
+			height: 30px;
+			padding-top: 10px;
+		}
+		#input_file_div:hover {
+			border: 3px solid red;
+		}
+		#output_file_div {
+			display: block;
+			border: 3px solid brown;
+			width:  500px;
+			height: 30px;
+			padding-top: 10px;
+		}
+
+		#point_div {
+			border: 3px solid blue;
+			width:  500px;
+			height: 40px;
+			padding-top: 20px;
+		}
+		.b_action {
+			display: none;
+			background-color: Aqua;
+			position: absolute;
+			right: 20px;
+			padding-left: 16px;
+			padding-right: 16px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+		}
+
+    </style>
+ 
+  </head>
+<body>
+<div id="main">
+	<h2> Altitudes de points d'une trace gpx </h2>
+	<div id= file_div>
+		<div>
+			<span> Fichier gpx : </span>
+			<label id= "input_label" for="file_select">Choisir un fichier</label>
+			<span> ou déposez le ci-dessous </span>
+		</div><br>
+		<div id="input_file_div"    >
+		  <span id= "input_file_span">Fichier d'entrée</span>
+		  <button id="b_process_file" class= "b_action">Traiter</button>
+		</div>
+		<input type="file" id="file_select" style = "display:none" />	<br>
+		<div id="output_file_div"    >
+		  <span id= "output_file_span">Fichier de sortie</span>
+		  
+		  <button id="b_save_file" class= "b_action" >Télécharger</button>
+		</div>
+	</div><br>
+	<h2> Altitude d'un point isolé</h2>
+		<div id="point_div"    >
+			<span>&nbsp;longitude, latitude&nbsp</span>
+			<input type="text" id = "pointInput" value = "4.38616, 44.77871">
+		<span id="point_elev"    >	</span>
+			<button id = "b_treat_point" class= "b_action" style = "display:inline">Traiter</button>
+		</div>
+		
+</div>
+
+<script src="./gpx_elev.js" ></script>
+</body>
+</html>
+	

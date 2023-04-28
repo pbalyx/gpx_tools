@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Gpx tools</title>
+	<style>
+		.tool_div {
+			display: block;
+			border: 3px solid blue;
+			width:  600px;
+/*			height: 30px;*/
+			padding-left: 20px;		
+		}
+	
+	</style>
+</head>
+<body>
+    <h1>Quelques outils simples pour traiter les fichiers .gpx</h1>
+<!--   <h1>A few simple tools for .gpx files</h1> -->
+	
+	<div id= "gpxView_div" class= "tool_div"> 
+		<h2>  GpxView </h2>
+		<div id= "gpx_elev_intro">
+			Un visualisateur gpx de plus... mais celui-ci fait des petits trucs qu'on ne trouve pas forcément ailleurs.
+			<ul>
+				<li>Comparaison de deux gpx, y compris les profils d'altitude</li>
+				<li>Ajustement visuel du lissage pour le calcul des dénivelé</li>
+				<li>Extraction de parties du trajet</li>
+				<li>et plus encore...</li>
+			</ul>
+		</div>
+		C'est une simple page html
+		<p>	Vous pouvez <a href="./GpxView/GpxView.html" >la tester directement ici</a>
+		<br>
+		ou&nbsp 
+			<a href="./GpxView/GpxView.html" download = "_GpxView_" >télécharger le fichier</a>&nbsppour l'utiliser localement
+		</p>
+	</div><br>
+	<div id= "gpx_elev_div" class= "tool_div"> 
+		<h2>  Gpx_elev </h2>
+		<div id= "gpx_elev_intro">
+		Quand on veut extraire un fichier .gpx basé sur une route d'OpenStreetMap, soit directement, soit en utilisant des outils annexes (Waymarkedtrails, Knooppuntnet) on obtient un fichier "plat" sans indication d'altitude.
+		Ce petit utilitaire permet de rajouter une altitude sur chaque point du circuit
+		</div>
+		C'est une simple page html
+		<p>	Vous pouvez <a href="./Gpx_elev/Gpx_elev.html" >la tester directement ici</a>
+		<br>
+		ou&nbsp 
+			<a href="./Gpx_elev/Gpx_elev.html" download = "_GpxView_" >télécharger le fichier</a>&nbsppour l'utiliser localement
+		</p>
+	</div>	
+</body>
+</html>
+
+
