@@ -101,7 +101,9 @@ var input_file_div = document.getElementById('input_file_div');
 var input_file_span = document.getElementById('input_file_span');
 var output_file_span = document.getElementById('output_file_span');
 
-const ptsInLoop = 10;  
+const ptsInLoop = 200; 
+// Processing is split into several queries to avoid the "query string too large" error message.
+// Maybe a value larger than 200 could also work. To be tested...
 
 //region Read file
 
@@ -185,6 +187,7 @@ function processFile() {
   var promises = [];
   
 	//double boucle ici
+
 	nbLoops = Math.floor((NbPts - 1)/ptsInLoop) + 1; //avoid empty string (ex: 190 pts 10 ptsinloop)
 	var iStart, iEnd;
     for (let j = 0; j < nbLoops; j++) {
