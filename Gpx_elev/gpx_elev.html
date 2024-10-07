@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>gpx_elev 0.0</title>
+    <title>gpx_elev 1.0</title>
     <style>
 		#main {
 			position: absolute;
@@ -85,10 +85,15 @@
 		
 </div>
 
-<!-- <script src="./gpx_elev.js" ></script> -->
-<script>
+//<script src="./gpx_elev.js" ></script>
 
-var URLbase = 'https://wxs.ign.fr/calcul/alti/rest/elevation.json?';
+<script>
+var	URLbase = 'https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json?resource=ign_rge_alti_wld&';
+ 
+// URLbase_old = 'https://wxs.ign.fr/calcul/alti/rest/elevation.json?';
+// changement d'url géopartail -> geoplatform
+// voir https://geoservices.ign.fr/documentation/services/services-geoplateforme/altimetrie
+
 
 var input_file_name;
 var output_file_name;
@@ -101,10 +106,7 @@ var input_file_div = document.getElementById('input_file_div');
 var input_file_span = document.getElementById('input_file_span');
 var output_file_span = document.getElementById('output_file_span');
 
-const ptsInLoop = 200; 
-// When dealing with too large files, server answer "reqquest UI too long"
-// Processing is split into several queries to avoid the  error message.
-// Maybe a value larger than 200 could also work. Maximum seems to be around 400.
+const ptsInLoop = 10;  
 
 //region Read file
 
@@ -112,6 +114,7 @@ document.getElementById('file_select').addEventListener('change', handleFileSele
 function handleFileSelect(evt) {
 	const fileList = evt.target.files; // FileList object
 	currentFile = fileList[0];
+//console.log(fileList);
 	readFile(currentFile);
 }
 
@@ -127,6 +130,7 @@ input_file_div.addEventListener('drop', (event) => {
 	event.preventDefault();
 	const fileList = event.dataTransfer.files;
 	currentFile = fileList[0];
+//  console.log(fileList);
 	readFile(currentFile);
 });
 
@@ -142,14 +146,14 @@ function readFile(_file) {
 		var parser = new DOMParser();
 		gpxXml = parser.parseFromString(gpxText, "text/xml");
 		nSpace =gpxXml.documentElement.namespaceURI;
-//	console.log(nSpace);
+	console.log(nSpace);
 		testNode = gpxXml.getElementsByTagName("gpx");
 		if (testNode.length > 0) {
 			ptsNodes = gpxXml.getElementsByTagName("trkpt"); 
-			NbPts = ptsNodes.length;		
+			NbPts = ptsNodes.length;
+		
 console.log('read ok  ', _file.name, NbPts, '  points');
 		b_process_file.style.display ="inline";
-		b_save_file.style.display ="none";
 		}	
 		 else {
 console.log(_file.name, " bad file");
@@ -185,8 +189,7 @@ function makeRequest(url) {
 function processFile() {
   var promises = [];
   
-	//double loop here to split the file if needed
-
+	//double boucle ici
 	nbLoops = Math.floor((NbPts - 1)/ptsInLoop) + 1; //avoid empty string (ex: 190 pts 10 ptsinloop)
 	var iStart, iEnd;
     for (let j = 0; j < nbLoops; j++) {
@@ -203,10 +206,17 @@ function processFile() {
 		const requestStr = 'lon=' + lonStrs.join('|') + '&lat=' + latStrs.join('|') + '&zonly=true'; 
 		const URLFull = URLbase + requestStr;
 		
+//		callAPI(URLFull, reponseCallback, j);
 		var promise = makeRequest(URLFull);
 		promises.push(promise);		
 	}
  
+  
+/*  for (var i = 0; i < urls.length; i++) {
+    var promise = makeRequest(urls[i]);
+    promises.push(promise);
+  }*/
+
 Promise.all(promises).then(function(results) {
 	for (var j = 0; j < results.length; j++) {
 		treatResult(j, results[j])
@@ -304,10 +314,7 @@ var	ptStrs ;
 	httpRequest.send();
 }
 
-// endregion
-
 </script>
-
 </body>
 </html>
 	
