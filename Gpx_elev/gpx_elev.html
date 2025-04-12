@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>gpx_elev 1.0</title>
+    <title>gpx_elev 1.1</title>
     <style>
 		#main {
 			position: absolute;
@@ -86,6 +86,7 @@
 </div>
 
 <script>
+/// version 1.1 : delay between requests to remain below 5/second
 var	URLbase = 'https://data.geopf.fr/altimetrie/1.0/calcul/alti/rest/elevation.json?resource=ign_rge_alti_wld&';
  
 // URLbase_old = 'https://wxs.ign.fr/calcul/alti/rest/elevation.json?';
@@ -104,7 +105,8 @@ var input_file_div = document.getElementById('input_file_div');
 var input_file_span = document.getElementById('input_file_span');
 var output_file_span = document.getElementById('output_file_span');
 
-const ptsInLoop = 10;  
+const ptsInLoop = 250;
+const waitTime = 300;  
 
 //region Read file
 
@@ -183,6 +185,13 @@ function makeRequest(url) {
   });
 }
 
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
 
 function processFile() {
   var promises = [];
@@ -207,6 +216,7 @@ function processFile() {
 //		callAPI(URLFull, reponseCallback, j);
 		var promise = makeRequest(URLFull);
 		promises.push(promise);		
+		wait(waitTime);
 	}
  
   
