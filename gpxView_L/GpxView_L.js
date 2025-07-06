@@ -1,6 +1,6 @@
 ////
 const version ="3.0.9";
-const subV = "";
+const subV = "_a";
 // V_2.6.5 correction bug lissage
 // V_2.7.0 lissage en mètres ou en points
 	
