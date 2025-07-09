@@ -2,26 +2,50 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"> 
     <title>GpxView_L</title>
  	<link rel="stylesheet" type="text/css" href="./leaflet_src/leaflet.css">	 
 	<script src="./leaflet_src/leaflet-src.js" ></script>   <!-- version 1.6.0 -->
    <style>
 	
 	html {
+		overscroll-behavior: none !important;	
 	}
 	 
 	#main {
+		height: calc(95vh);		
+		display: flex;
+		flex-direction: column; 
 		border: 2px solid blue;
 	}
 	
 	#map {
-		height: calc(100vh - 20px);		
+		cursor: default;
+		flex: 1; /* Fait en sorte que la carte prenne tout l'espace disponible en hauteur */
 	}
 	
-	#map:hover {
-		cursor: default;
-	}
+	
 
+/*		#main {
+		position: fixed;
+		top: 3px;
+		left: 3px;
+		width: 99%;
+		height: 98%; /* Ajuster la hauteur du cadre principal selon vos besoins*/
+		display: flex;
+		flex-direction: column; 
+		border: 2px solid blue;
+	} 
+	
+	.map {
+		flex: 1; /* Fait en sorte que la carte prenne tout l'espace disponible en hauteur */
+ 	}
+
+	
+	#map:hover {
+	cursor: default;
+	}
+*/
 	
 		/* Surcharge de la règle will-change dans Leaflet */
 	.leaflet-zoom-anim .leaflet-zoom-animated {
@@ -91,8 +115,8 @@
 	
 	}
 	
-	#tooltipDiv {
-	/*padding:0px 5px;
+/*	#tooltipDiv {
+	padding:0px 5px;
 		position: absolute; 
 		display: block; 
 		
@@ -102,9 +126,9 @@
 		left: -200px; out of screen at beginning
 		background-color: #aaffaa;
 		border: 1px solid red;
-		z-index: 550; */
+		z-index: 550; 
 	}
-	
+	*/
 	#popUpMenu {
 		z-index: 5;
 	}
@@ -122,7 +146,6 @@
 		text-align: center;
 		background-color: #aaffaa;
 		border: 1px solid blue;
-		z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
 		z-index: 550;
 	}
 
@@ -134,7 +157,6 @@
 		left: 60px;
 		background-color: #aaffaa;
 		border: 1px solid blue;
-		z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 		resize: both;
 		overflow: auto;
 		z-index: 500;
@@ -149,7 +171,6 @@
 		top: 50%;
 		background-color: white;
 		border: 1px solid blue;
-		z-index: 2; 
 		resize: both;
 		overflow: hidden;
 		z-index: 500;
@@ -164,7 +185,6 @@
 		top: 155px;
 		background-color: white;
 		border: 1px solid blue;
-		z-index: 2; 
 		resize: both;
 		overflow: hidden;
 		z-index: 500;
@@ -276,8 +296,8 @@
 /*		background-color: #FFD455;
 		color: black;
 		padding: 10px;
-		font-size: 10px; 
 		border: none;*/
+		font-size: 0.8em; 
 		cursor: pointer;
 	}
 	.d_sub {
@@ -370,7 +390,7 @@
 		background-color: rgba(0,60,136,.8);
 		color: white;
 		font-size : 0.8em;
-		z-index:4;
+		z-index:500;
 	}
 	
 	#tooltipDiv {
@@ -472,7 +492,7 @@
 
 	</div>
 
-	<div id="map">
+	<div id="map" class="map">
 		<div id= "zoomDiv">z:</div>
 	</div>
 	

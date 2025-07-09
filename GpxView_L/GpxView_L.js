@@ -1,6 +1,6 @@
 ////
 const version ="3.0.9";
-const subV = "_a";
+const subV = "_c";
 // V_2.6.5 correction bug lissage
 // V_2.7.0 lissage en mètres ou en points
 	
@@ -11,9 +11,10 @@ const subV = "_a";
 
 
 window.onload = (event) => {
-	b_version.innerHTML = 'V: ' + version + subV; 
-	document.title = 'GpxView_L - ' + version + subV;
-	console.log("GpxView_L  version : ", version);
+	var fullV = version + subV
+	b_version.innerHTML = 'V: ' + fullV; 
+	document.title = 'GpxView_L - ' + version;
+	console.log("GpxView_L  version : ", fullV);
 	init_map();
 ////	init_features_table();
 };
